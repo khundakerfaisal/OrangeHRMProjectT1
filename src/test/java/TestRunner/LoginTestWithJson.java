@@ -2,25 +2,28 @@ package TestRunner;
 
 import Config.BasePage;
 import Pages.LoginPages;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
-import org.testng.asserts.SoftAssert;
+import utils.Utils;
 
-public class LoginTest extends BasePage {
+import java.io.IOException;
 
+public class LoginTestWithJson extends BasePage {
     @Test
-    public void doLoginWithValidCred() throws InterruptedException {
+    public void doLoginWithValidCred() throws InterruptedException, IOException, ParseException {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPages loginPages=new LoginPages(driver);
 
-        loginPages.hrmLoginPage("Admin","admin123");
+        String username= Utils.getUser().get("UserName").toString();
+        String password= Utils.getUser().get("Password").toString();
+
+        loginPages.hrmLoginPage(username,password);
         Thread.sleep(1000);
         String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();
         String TextActual="Dashboard";
         Assert.assertEquals(TextActual,TextExpected);
         Thread.sleep(1000);
     }
-
 }

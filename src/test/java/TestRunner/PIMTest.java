@@ -4,10 +4,13 @@ import Config.BasePage;
 import Pages.LoginPages;
 import Pages.PIMPages;
 import com.github.javafaker.Faker;
-import net.bytebuddy.build.Plugin;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.Utils;
+
+import java.io.IOException;
 
 public class PIMTest extends BasePage {
     @Test(priority=1)
@@ -22,7 +25,7 @@ public class PIMTest extends BasePage {
         Thread.sleep(1000);
     }
     @Test(priority=2)
-    public void createEmployee() throws InterruptedException {
+    public void createEmployee() throws InterruptedException, IOException, ParseException {
         PIMPages pimPages=new PIMPages(driver);
         Faker faker=new Faker();
         String firstName=faker.name().firstName();
@@ -35,6 +38,8 @@ public class PIMTest extends BasePage {
 
         pimPages.pimMenuOperation(firstName,middleName,lastName,userName,password,confirmPassword);
         Thread.sleep(1000);
+        Utils.SaveEmployee(firstName,middleName,lastName,userName,password,confirmPassword);
+
 //        String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();
 //        String TextActual="Dashboard";
 //        Assert.assertEquals(TextActual,TextExpected);
