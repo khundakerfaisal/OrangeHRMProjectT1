@@ -4,6 +4,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,19 +13,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Utils {
-    public static void SaveEmployee(String firstName,String middleName,String lastName,String userName,String password,String confirmPassword) throws IOException, ParseException {
+    public static void SaveEmployee(String firstName,String lastName,String userName,String password) throws IOException, ParseException {
         String filePath="./src/test/resources/employee.json";
         JSONParser parser=new JSONParser();
         JSONArray addedArray= (JSONArray) parser.parse(new FileReader(filePath));
-        JSONObject obj=new JSONObject();
-        obj.put("FirstName",firstName);
-        obj.put("MiddleName",middleName);
-        obj.put("LastName",lastName);
-        obj.put("UserName",userName);
-        obj.put("Password",password);
-        obj.put("ConfirmPassword",confirmPassword);
-
-        addedArray.add(obj);
+        JSONObject addedObject=new JSONObject();
+        addedObject.put("FirstName",firstName);
+        addedObject.put("LastName",lastName);
+        addedObject.put("UserName",userName);
+        addedObject.put("Password",password);
+        addedArray.add(addedObject);
         FileWriter writer=new FileWriter(filePath);
         writer.write(addedArray.toJSONString());
         writer.flush();
@@ -31,14 +30,59 @@ public class Utils {
 
 
 
-    }
-    public static JSONObject getUser() throws IOException, ParseException {
-        String filePath="./src/test/resources/employee.json";
-        JSONParser parser=new JSONParser();
-        JSONArray addedArray= (JSONArray) parser.parse(new FileReader(filePath));
-        JSONObject lastEmpObject= (JSONObject) addedArray.get(addedArray.size()-1);
-        return lastEmpObject;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        JSONParser parser=new JSONParser();
+//        JSONArray addedArray= (JSONArray) parser.parse(new FileReader(filePath));
+//        JSONObject obj=new JSONObject();
+//        obj.put("FirstName",firstName);
+//        obj.put("MiddleName",middleName);
+//        obj.put("LastName",lastName);
+//        obj.put("UserName",userName);
+//        obj.put("Password",password);
+//        obj.put("ConfirmPassword",confirmPassword);
+//
+//        addedArray.add(obj);
+//        FileWriter writer=new FileWriter(filePath);
+//        writer.write(addedArray.toJSONString());
+//        writer.flush();
+//        writer.close();
+
+
 
     }
+
+    public static JSONObject getUserCred() throws IOException, ParseException {
+        String filePath="./src/test/resources/employee.json";
+        JSONParser parser=new JSONParser();
+        JSONArray getArrayValue= (JSONArray) parser.parse(new FileReader(filePath));
+        JSONObject getLastObject= (JSONObject) getArrayValue.get(getArrayValue.size()-1);
+        return getLastObject;
+
+
+    }
+
+    public static void scrollBy(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,50)");
+    }
+
 
 }

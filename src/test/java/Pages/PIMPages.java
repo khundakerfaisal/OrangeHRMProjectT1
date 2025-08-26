@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.Utils;
 
 import java.util.List;
 
@@ -53,8 +54,7 @@ public class PIMPages {
         Thread.sleep(1000);
         inputUsername.get(5).sendKeys(userName);
         Thread.sleep(1000);
-        JavascriptExecutor js=(JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,50)");
+        Utils.scrollBy(driver);
         inputPassword.get(6).sendKeys(password);
         Thread.sleep(1000);
         inputConfirmPassword.get(7).sendKeys(confirmPassword);

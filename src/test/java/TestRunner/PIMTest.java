@@ -38,7 +38,8 @@ public class PIMTest extends BasePage {
 
         pimPages.pimMenuOperation(firstName,middleName,lastName,userName,password,confirmPassword);
         Thread.sleep(1000);
-        Utils.SaveEmployee(firstName,middleName,lastName,userName,password,confirmPassword);
+//        Utils.SaveEmployee(firstName,middleName,lastName,userName,password,confirmPassword);
+        Utils.SaveEmployee(firstName,lastName,userName,password);
 
 //        String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();
 //        String TextActual="Dashboard";
