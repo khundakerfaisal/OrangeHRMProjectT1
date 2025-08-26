@@ -11,17 +11,12 @@ import utils.Utils;
 import java.io.IOException;
 
 public class LoginTestWithJson extends BasePage {
-    @Test
+    @Test(priority = 1,enabled = false)
     public void doLoginWithValidCred() throws InterruptedException, IOException, ParseException {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPages loginPages=new LoginPages(driver);
-
-
-//        String username= Utils.getUser().get("UserName").toString();
-//        String password= Utils.getUser().get("Password").toString();
         String username= Utils.getUserCred().get("UserName").toString();
         String password= Utils.getUserCred().get("Password").toString();
-
         loginPages.hrmLoginPage(username,password);
         Thread.sleep(1000);
         String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();

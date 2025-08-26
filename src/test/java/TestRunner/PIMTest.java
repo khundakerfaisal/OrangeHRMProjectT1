@@ -6,6 +6,7 @@ import Pages.PIMPages;
 import com.github.javafaker.Faker;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Utils;
@@ -17,7 +18,11 @@ public class PIMTest extends BasePage {
     public void doLoginWithValidCred() throws InterruptedException {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPages loginPages=new LoginPages(driver);
-        loginPages.hrmLoginPage("Admin","admin123");
+
+        String username= System.getProperty("username");
+        String password= System.getProperty("password");
+//        loginPages.hrmLoginPage("Admin","admin123");
+        loginPages.hrmLoginPage(username,password);
         Thread.sleep(1000);
         String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();
         String TextActual="Dashboard";
@@ -38,7 +43,6 @@ public class PIMTest extends BasePage {
 
         pimPages.pimMenuOperation(firstName,middleName,lastName,userName,password,confirmPassword);
         Thread.sleep(1000);
-//        Utils.SaveEmployee(firstName,middleName,lastName,userName,password,confirmPassword);
         Utils.SaveEmployee(firstName,lastName,userName,password);
 
 //        String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();

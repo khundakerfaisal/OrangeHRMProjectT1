@@ -23,6 +23,15 @@ dependencies {
 }
 
 test {
-    useTestNG()
-//    useJUnitPlatform()
+    useTestNG() {
+        if (project.hasProperty("username") && project.hasProperty("password")) {
+            systemProperties.put("username", project.property("username"))
+            systemProperties.put("password", project.property("password"))
+        }
+        if (project.hasProperty("suiteName")) {
+            systemProperties.put("suiteName", project.property("suiteName"))
+        }
+        suites "./src/test/resources/"+systemProperties.get("suiteName")
+
+    }
 }

@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 
 public class LoginTest extends BasePage {
 
-    @Test
+    @Test (priority = 1,enabled = false)
     public void doLoginWithValidCred() throws InterruptedException {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPages loginPages=new LoginPages(driver);
