@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Aug 26 19:51:44 BDT 2025","Tue Aug 26 19:51:55 BDT 2025","11216","Orange HRM Project","PIM Module","TestRunner.PIMTest","TestRunner.PIMTest","doLoginWithValidCred","Admin Login Successfully!!",""
+"passed","Tue Aug 26 19:52:13 BDT 2025","Tue Aug 26 19:52:24 BDT 2025","10324","Orange HRM Project","Login Module Smoke","TestRunner.LoginTestWithJson","TestRunner.LoginTestWithJson","doLoginWithValidCred","Employee Login Successfully!!",""
+"passed","Tue Aug 26 19:51:56 BDT 2025","Tue Aug 26 19:52:09 BDT 2025","13354","Orange HRM Project","PIM Module","TestRunner.PIMTest","TestRunner.PIMTest","createEmployee","Employee User create successfully!!",""

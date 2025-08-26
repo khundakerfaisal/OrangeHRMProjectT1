@@ -14,14 +14,12 @@ import utils.Utils;
 import java.io.IOException;
 
 public class PIMTest extends BasePage {
-    @Test(priority=1)
+    @Test(priority=1,groups = "smoke",description = "Admin Login Successfully!!")
     public void doLoginWithValidCred() throws InterruptedException {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPages loginPages=new LoginPages(driver);
-
         String username= System.getProperty("username");
         String password= System.getProperty("password");
-//        loginPages.hrmLoginPage("Admin","admin123");
         loginPages.hrmLoginPage(username,password);
         Thread.sleep(1000);
         String TextExpected=driver.findElement(By.xpath("//span/h6[text()='Dashboard']")).getText();
@@ -29,7 +27,7 @@ public class PIMTest extends BasePage {
         Assert.assertEquals(TextActual,TextExpected);
         Thread.sleep(1000);
     }
-    @Test(priority=2)
+    @Test(priority=2,groups = "smoke",description = "Employee User create successfully!!")
     public void createEmployee() throws InterruptedException, IOException, ParseException {
         PIMPages pimPages=new PIMPages(driver);
         Faker faker=new Faker();

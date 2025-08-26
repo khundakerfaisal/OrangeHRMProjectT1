@@ -9,18 +9,18 @@ import java.time.Duration;
 
 public class BasePage {
     public WebDriver driver;
-    @BeforeTest
+    @BeforeTest(groups = "smoke")
 
     public void StartBrowser(){
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     }
-//@AfterTest
-//    public void CloseBrowser(){
-//        driver.quit();
-//
-//    }
+@AfterTest(groups = "smoke")
+    public void CloseBrowser(){
+        driver.quit();
+
+    }
 
 
 

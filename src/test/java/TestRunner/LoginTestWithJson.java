@@ -11,7 +11,7 @@ import utils.Utils;
 import java.io.IOException;
 
 public class LoginTestWithJson extends BasePage {
-    @Test(priority = 1,enabled = false)
+    @Test(priority = 1,groups = "smoke",description = "Employee Login Successfully!!")
     public void doLoginWithValidCred() throws InterruptedException, IOException, ParseException {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPages loginPages=new LoginPages(driver);
