@@ -22,8 +22,8 @@ dependencies {
     implementation("com.googlecode.json-simple:json-simple:1.1.1")
     // https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
     implementation("io.qameta.allure:allure-testng:2.29.1")
-}
 
+}
 test {
     useTestNG() {
         if (project.hasProperty("username") && project.hasProperty("password")) {
@@ -37,3 +37,6 @@ test {
 
     }
 }
+
+
+
