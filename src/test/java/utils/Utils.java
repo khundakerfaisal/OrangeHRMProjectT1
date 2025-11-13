@@ -29,44 +29,6 @@ public class Utils {
         writer.close();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        JSONParser parser=new JSONParser();
-//        JSONArray addedArray= (JSONArray) parser.parse(new FileReader(filePath));
-//        JSONObject obj=new JSONObject();
-//        obj.put("FirstName",firstName);
-//        obj.put("MiddleName",middleName);
-//        obj.put("LastName",lastName);
-//        obj.put("UserName",userName);
-//        obj.put("Password",password);
-//        obj.put("ConfirmPassword",confirmPassword);
-//
-//        addedArray.add(obj);
-//        FileWriter writer=new FileWriter(filePath);
-//        writer.write(addedArray.toJSONString());
-//        writer.flush();
-//        writer.close();
-
-
-
     }
 
     public static JSONObject getUserCred() throws IOException, ParseException {
